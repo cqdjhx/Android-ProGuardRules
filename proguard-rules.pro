@@ -19,4 +19,49 @@
 -optimizationpasses 5
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 
+#R
+-keep public class com.XXXX.R$*{
+    public static final int *;
+}
+
+#bean
+-keep class com.XXXX.bean.** { *; }
+-keep class com..jsonobject.** { *; }
+-keep class com.XXXX.AppConfig.** { * ;}
+
+
+#logback
+-keep class ch.qos.logback.** { * ;}
+-dontwarn ch.qos.logback.**
+
+
+#eventbus
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+#volley
+-keep class com.android.volley.**  {* ;}
+-keep class org.apache.http.**  {* ;}
+
+-keepattributes Signature,RuntimeVisibleAnnotations,AnnotationDefault,*Annotation*
+
+
 -include librules/basic.pro
+-include librules/basic.pro
+-include librules/butter-knife.pro
+-include librules/green-dao.pro
+-include librules/gson.pro
+-include librules/okhttp.pro
+-include librules/otto.pro
+-include librules/retrofit.pro
+-include librules/rx-java.pro
+
+
+-dontwarn demo.**
+-keep class demo.** { *;}
+
+-dontwarn rego.printlib.**
+-keep class rego.printlib.** { *;}
+
+-dontwarn com.newland.**
+-keep class com.newland.** { *;}
